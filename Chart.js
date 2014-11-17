@@ -1535,6 +1535,11 @@
 			return this.endPoint - (scalingFactor * (value - this.min));
 		},
 		calculateX : function(index){
+			//check to ensure data is in chart otherwise we will get infinity
+	        	if (!(this.valuesCount - (this.offsetGridLines ? 0 : 1))) {
+	            		return 0;
+	        	}
+	        	
 			var isRotated = (this.xLabelRotation > 0),
 				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
 				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
